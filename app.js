@@ -3,14 +3,15 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import dotenv from 'dotenv';
 
+import './modules/dotenv.js'
+import connect from './config/dbConnection.js'
 import indexRouter from './routes/index.js';
 
-const app = express();
-const __dirname = path.resolve();
+connect();
 
-dotenv.config({ path: path.join(__dirname, 'config/.env')})
+const __dirname = path.resolve();
+const app = express();
 if (process.env.NODE_ENV === 'production') {
   app.use(logger('combined'));
 } else {
