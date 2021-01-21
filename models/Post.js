@@ -15,6 +15,12 @@ const postSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  comments: [
+    {
+      type: ObjectId,
+      ref: 'Comment'
+    }
+  ],
   hashtags: [
     {
       type: ObjectId,
