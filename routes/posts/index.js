@@ -1,5 +1,5 @@
 import express from 'express';
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 import commentRouter from './comments/index.js';
 import hashTagRouter from './hashtags/index.js';
 
