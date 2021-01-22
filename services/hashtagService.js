@@ -12,7 +12,21 @@ async function addHashTags(tag) {
   return hashTags;
 }
 
+async function updateHashTags(hashTagDoc) {
+  const hashTag = await HashTag.updateOne(
+    {
+      _id: hashTagDoc._id,
+    },
+    {
+      tag: hashTagDoc.tag,
+    }
+  );
+
+  return hashTag;
+}
+
 export default {
   getHashTags,
   addHashTags,
+  updateHashTags,
 };

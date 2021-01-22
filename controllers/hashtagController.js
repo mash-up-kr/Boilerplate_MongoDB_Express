@@ -20,7 +20,24 @@ async function addHashTag(req, res) {
   }
 }
 
+async function updateHashTag(req, res) {
+  try {
+    const { id } = req.params;
+    const { tag } = req.body;
+
+    const hashTag = hashTagService.updateHashTags({
+      _id: id,
+      tag,
+    });
+
+    res.status(200).json(hashTag);
+  } catch (err) {
+    res.status(500).json('Error while update hashTag');
+  }
+}
+
 export default {
   getHashTags,
   addHashTag,
+  updateHashTag,
 };
