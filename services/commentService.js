@@ -7,6 +7,15 @@ async function getComments(postId) {
   return comments;
 }
 
+async function postComment(commentDoc) {
+  const comment = await Comment.create({
+    postId: commentDoc.postId,
+    comment: commentDoc.comment
+  });
+  return comment;
+} 
+
 export default {
-  getComments
+  getComments,
+  postComment
 }
