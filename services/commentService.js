@@ -15,7 +15,19 @@ async function postComment(commentDoc) {
   return comment;
 } 
 
+async function updateComment(commentDoc) {
+  const comment = await Comment.updateOne({
+    _id: commentDoc.commentId
+  },
+  {
+    comment: commentDoc.comment
+  }
+  );
+  return comment;
+}
+
 export default {
   getComments,
-  postComment
+  postComment,
+  updateComment
 }
