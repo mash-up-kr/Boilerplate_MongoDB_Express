@@ -6,6 +6,12 @@ async function getHashTags() {
   return hashTags;
 }
 
+async function getHashTag(hashTagId) {
+  const hashTag = await HashTag.findOne({ _id: hashTagId });
+
+  return hashTag;
+}
+
 async function addHashTag(tag) {
   const hashTag = await HashTag.create({ tag });
 
@@ -33,6 +39,7 @@ async function deleteHashTag(id) {
 
 export default {
   getHashTags,
+  getHashTag,
   addHashTag,
   updateHashTag,
   deleteHashTag,
