@@ -15,6 +15,12 @@ async function getHashTag(hashTagId) {
 async function addHashTag(tag) {
   const hashTag = await HashTag.create({ tag });
 
+  return hashTag;
+}
+
+async function addHashTags(tags) {
+  const hashTags = await HashTag.insertMany(tags);
+
   return hashTags;
 }
 
@@ -33,14 +39,21 @@ async function updateHashTag(hashTagDoc) {
 
 async function deleteHashTag(id) {
   await HashTag.deleteOne({ _id: id });
-
   return id;
+}
+
+async function getHashTagByTags(hashTags) {
+  const hashTagsDoc = await HashTag.find({ tag: { $in: hashTags } });
+
+  return hashTagsDoc;
 }
 
 export default {
   getHashTags,
   getHashTag,
   addHashTag,
+  addHashTags,
   updateHashTag,
   deleteHashTag,
+  getHashTagByTags,
 };
